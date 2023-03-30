@@ -16,7 +16,7 @@ export const SignupApi = (form) => async (dispatch) => {
       name: form.name,
       email: form.email,
       password: form.password,
-      role: "user",
+      role: "admin",
     });
     dispatch({ type: signup_success, payload: res.data });
   } catch (e) {

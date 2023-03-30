@@ -8,7 +8,14 @@ import AuthRoute from "../Private/AuthRoute";
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<DashBoard />} />
+      <Route
+        path="/"
+        element={
+          <AuthRoute>
+            <DashBoard />
+          </AuthRoute>
+        }
+      />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
     </Routes>
