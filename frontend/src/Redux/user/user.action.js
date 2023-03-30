@@ -4,7 +4,7 @@ import {
   login_success,
   signup_success,
   logout,
-  clear
+  clear,
 } from "./user.type";
 import axios from "axios";
 
@@ -12,12 +12,15 @@ import axios from "axios";
 export const SignupApi = (form) => async (dispatch) => {
   dispatch({ type: loading });
   try {
-    const res = await axios.post("http://localhost:8080/user/signup", {
-      name: form.name,
-      email: form.email,
-      password: form.password,
-      role: "admin",
-    });
+    const res = await axios.post(
+      "https://paypal-3knu.onrender.com/user/signup",
+      {
+        name: form.name,
+        email: form.email,
+        password: form.password,
+        role: "admin",
+      }
+    );
     dispatch({ type: signup_success, payload: res.data });
   } catch (e) {
     dispatch({ type: failed });
@@ -28,10 +31,13 @@ export const SignupApi = (form) => async (dispatch) => {
 export const LoginApi = (form) => async (dispatch) => {
   dispatch({ type: loading });
   try {
-    const res = await axios.post("http://localhost:8080/user/login", {
-      email: form.email,
-      password: form.password,
-    });
+    const res = await axios.post(
+      "https://paypal-3knu.onrender.com/user/login",
+      {
+        email: form.email,
+        password: form.password,
+      }
+    );
     dispatch({ type: login_success, payload: res.data });
   } catch (e) {
     dispatch({ type: failed });
@@ -43,4 +49,3 @@ export const logoutFunc = () => ({ type: logout });
 
 // ------------ (Clear) ----------------
 export const ClearFunc = () => ({ type: clear });
-
